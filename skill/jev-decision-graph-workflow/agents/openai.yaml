@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jev Decision Graph Workflow"
+  short_description: "Design typed multi-step Jev decisions"
+  default_prompt: "Use $jev-decision-graph-workflow to design a multi-step Jev decision workflow with confidence fallbacks, traces, and a benchmark."

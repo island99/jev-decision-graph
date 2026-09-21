@@ -39,6 +39,16 @@ npm run benchmark:real
 npm start
 ```
 
+## Codex and Claude Code Skill
+
+This repository also ships a cross-agent skill for designing Jev-style typed decision workflows:
+
+```text
+skill/jev-decision-graph-workflow/
+```
+
+It provides workflow rules, a decision graph template, confidence fallback guidance, trace requirements, and benchmark design instructions. See [SKILL_INSTALL.md](./SKILL_INSTALL.md) for Codex and Claude Code installation.
+
 To run the real Jev evaluation, add your key to a local `.env` file:
 
 ```bash
