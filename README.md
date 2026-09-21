@@ -17,6 +17,7 @@
 npm install
 npm start
 npm test
+npm run benchmark
 ```
 
 ## 最小示例
@@ -71,6 +72,26 @@ const result = await graph.run(
 | `fallbackNode` | 必填，低置信兜底节点 |
 | `scoreValues` | `score` 可选，把档位下标插值为业务分数 |
 | `cache` | 可选，开启后按节点版本和问题内容缓存 |
+
+## Benchmark
+
+`benchmark/tickets.json` 提供 10 条真实工单路由场景，覆盖：
+
+- 账单退款升级与普通发票咨询
+- 登录故障与数据同步延迟
+- 价格咨询与版本升级
+- 垃圾广告关闭
+- 低置信相关性、模糊意图、低置信退款转人工
+
+数据与执行产物通过 MD5 绑定：
+
+- `benchmark/tickets.md5` 校验数据集版本
+- `benchmark/results.md5` 校验 `results.json`
+- `benchmark/report.md` 输出人类可读结果
+
+```bash
+npm run benchmark
+```
 
 ## Jev 后端约定
 

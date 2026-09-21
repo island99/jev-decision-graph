@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { createHash } from "node:crypto";
+import { readFile } from "node:fs/promises";
 import { DecisionGraph, MockJevBackend } from "../src/index.js";
 
 function createGraph() {
@@ -128,4 +130,35 @@ test("backend values outside the declared vocabulary are rejected", async () => 
   }));
 
   await assert.rejects(() => createGraph().run({ text: "未知类别" }, backend), /outside the declared vocabulary/);
+});
+
+test("benchmark dataset is bound to its recorded MD5", async () => {
+  const dataset = await readFile(new URL("../benchmark/tickets.json", import.meta.url));
+  const recorded = (await readFile(new URL("../benchmark/tickets.md5", import.meta.url), "utf8")).trim();
+  const actual = createHash("md5").update(dataset).digest("hex");
+
+  assert.equal(actual, recorded);
+});
+
+test("ticket benchmark has ten cases and complete expectations", async () => {
+  const dataset = JSON.parse(
+    await readFile(new URL("../benchmark/tickets.json", import.meta.url), "utf8")
+  );
+
+  assert.equal(dataset.length, 10);
+  assert.ok(dataset.every((item) => item.id && item.ticket_text));
+  assert.ok(dataset.every((item) => Array.isArray(item.expected_trace_nodes) && item.expected_trace_nodes.length > 0));
+});
+
+test("benchmark result is bound to its recorded MD5", async () => {
+  const fullResult = JSON.parse(
+    await readFile(new URL("../benchmark/results.json", import.meta.url), "utf8")
+  );
+  const { started_at, finished_at, ...stableResult } = fullResult;
+  const recorded = (await readFile(new URL("../benchmark/results.md5", import.meta.url), "utf8")).trim();
+  const actual = createHash("md5").update(JSON.stringify(stableResult, null, 2)).digest("hex");
+
+  assert.equal(actual, recorded);
+  assert.ok(Date.parse(started_at));
+  assert.ok(Date.parse(finished_at));
 });

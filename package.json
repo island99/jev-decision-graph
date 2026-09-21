@@ -6,7 +6,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "node --test",
-    "start": "node examples/ticket.js"
+    "start": "node examples/ticket.js",
+    "benchmark": "node scripts/run-benchmark.mjs"
   },
   "engines": {
     "node": ">=20"

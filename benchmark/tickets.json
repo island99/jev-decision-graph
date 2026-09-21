@@ -1,0 +1,62 @@
+[
+  {
+    "id": "refund_escalation",
+    "ticket_text": "你们昨天重复扣了我两笔会员费，我要求马上退款。",
+    "expected_terminal": "route_refund",
+    "expected_trace_nodes": ["is_relevant", "intent", "refund_check"]
+  },
+  {
+    "id": "invoice_query",
+    "ticket_text": "请帮我查一下上个月的订单发票抬头为什么还是旧公司名称。",
+    "expected_terminal": "route_billing",
+    "expected_trace_nodes": ["is_relevant", "intent", "refund_check"]
+  },
+  {
+    "id": "login_failure",
+    "ticket_text": "今天上午开始登录一直报错，验证码发不过来。",
+    "expected_terminal": "route_technical",
+    "expected_trace_nodes": ["is_relevant", "intent"]
+  },
+  {
+    "id": "sync_delay",
+    "ticket_text": "订单数据同步到看板已经有半小时延迟，刷新也没有恢复。",
+    "expected_terminal": "route_technical",
+    "expected_trace_nodes": ["is_relevant", "intent"]
+  },
+  {
+    "id": "pricing_inquiry",
+    "ticket_text": "我们团队有 35 个人，想咨询专业版一年的价格和发票流程。",
+    "expected_terminal": "route_sales",
+    "expected_trace_nodes": ["is_relevant", "intent"]
+  },
+  {
+    "id": "renewal_inquiry",
+    "ticket_text": "账号下个月到期，想了解续费方案能不能从标准版升级到企业版。",
+    "expected_terminal": "route_sales",
+    "expected_trace_nodes": ["is_relevant", "intent"]
+  },
+  {
+    "id": "spam_ad",
+    "ticket_text": "低价代开发票，添加联系方式即可办理。",
+    "expected_terminal": "close_not_relevant",
+    "expected_trace_nodes": ["is_relevant"]
+  },
+  {
+    "id": "low_relevance",
+    "ticket_text": "这个按钮好像挺好看的，不知道要不要点。",
+    "expected_terminal": "human_review",
+    "expected_trace_nodes": ["is_relevant"]
+  },
+  {
+    "id": "ambiguous_intent",
+    "ticket_text": "这个产品最近怎么怪怪的，费用页面也看不懂。",
+    "expected_terminal": "human_review",
+    "expected_trace_nodes": ["is_relevant", "intent"]
+  },
+  {
+    "id": "refund_low_confidence",
+    "ticket_text": "去年有一笔订单好像多收了，但我不确定是不是这个账号。",
+    "expected_terminal": "human_review",
+    "expected_trace_nodes": ["is_relevant", "intent", "refund_check"]
+  }
+]
