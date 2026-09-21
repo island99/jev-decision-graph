@@ -4,6 +4,12 @@ Jev Decision Graph is a Node.js runtime for composing Jev-style, single-step typ
 
 This project is useful because many real automation problems are not free-text generation problems. They are typed decision problems: whether a request is relevant, which intent it belongs to, whether a refund is required, what priority it has, and whether the result is confident enough to act on automatically. Jev-style models are fast and type-safe for these decisions, but a production workflow still needs orchestration. This runtime provides that missing layer.
 
+## Project Relationship to Jev
+
+"Jev" refers to the System One Model created by TypeSafe AI and founded by Diogo Almeida, a co-inventor of ChatGPT. This is an independent open-source orchestration layer for Jev-style typed decision APIs. It is not an official TypeSafe AI project and is not endorsed by or affiliated with TypeSafe AI.
+
+The project deliberately uses the term "Jev-style" for two reasons: the runtime models `noul`, `choice`, and `score` decisions in the shape exposed by Jev, while remaining backend-agnostic enough to connect other decision models that follow the same typed contract.
+
 ## Why It Matters
 
 Traditional LLM pipelines often turn a business process into one large prompt. That approach is difficult to audit, hard to test, expensive to debug, and prone to propagating errors across steps. This project instead turns each decision into a typed node and makes the transitions between nodes explicit.
@@ -124,6 +130,12 @@ async decide(question, context) {
 Jev Decision Graph 是一个 Node.js 运行时，用于把 Jev 风格的单步类型化决策组合成可靠的多步业务流程。它把路由、状态、置信度、可观测性和兜底策略都保留在显式代码中，而不是隐藏在一个巨大的 prompt 里。
 
 这个项目解决的问题很实际：许多自动化任务并不是自由文本生成任务，而是类型化决策任务，例如请求是否相关、属于哪类意图、是否需要退款、优先级多高、结果是否足够可信以支持自动执行。Jev 风格的模型非常适合这些快速、类型安全的单步判断，但生产流程仍然需要编排层。这个项目提供的就是这一层。
+
+## 项目与 Jev 的关系
+
+“Jev” 指由 TypeSafe AI 推出的 System One Model，该公司由 ChatGPT 联合发明人 Diogo Almeida 创立。本项目是一个独立的开源编排层，用于串联 Jev 风格的类型化决策 API；它不是 TypeSafe AI 官方项目，也未获得 TypeSafe AI 的背书或隶属关系。
+
+本项目刻意使用 “Jev-style” 这个表述，原因有两点：运行时按 Jev 暴露的 `noul`、`choice`、`score` 决策形态建模；同时保持后端无关，可以接入遵循同一类型化契约的其他决策模型。
 
 ## 为什么重要
 
