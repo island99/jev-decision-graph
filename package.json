@@ -1,0 +1,15 @@
+{
+  "name": "jev-decision-graph",
+  "version": "0.1.0",
+  "description": "A typed decision graph runtime for chaining single-step Jev-style decisions.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test",
+    "start": "node examples/ticket.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "private": true
+}
