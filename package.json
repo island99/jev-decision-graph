@@ -7,7 +7,8 @@
   "scripts": {
     "test": "node --test",
     "start": "node examples/ticket.js",
-    "benchmark": "node scripts/run-benchmark.mjs"
+    "benchmark": "node scripts/run-benchmark.mjs",
+    "benchmark:real": "node scripts/run-real-benchmark.mjs"
   },
   "engines": {
     "node": ">=20"

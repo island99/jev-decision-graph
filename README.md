@@ -29,7 +29,14 @@ Requires Node.js 20+.
 npm install
 npm test
 npm run benchmark
+npm run benchmark:real
 npm start
+```
+
+To run the real Jev evaluation, add your key to a local `.env` file:
+
+```bash
+OPENROUTER_API_KEY=sk-or-...
 ```
 
 ## Minimal Example
@@ -143,6 +150,7 @@ Jev Decision Graph 是一个 Node.js 运行时，用于把 Jev 风格的单步�
 npm install
 npm test
 npm run benchmark
+npm run benchmark:real
 npm start
 ```
 

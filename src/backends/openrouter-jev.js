@@ -24,6 +24,7 @@ export class OpenRouterJevBackend {
         questions: {
           [`${context.node.id}_v${context.node.version}`]: question,
         },
+        ...(this.extraBody ?? {}),
       }),
       signal: context.signal,
     });
@@ -41,5 +42,15 @@ export class OpenRouterJevBackend {
       throw new DecisionBackendError("OpenRouter Jev response is missing the answer");
     }
     return answer;
+  }
+
+  static sanitizeRunStateForBenchmark(runState) {
+    const sanitized = structuredClone(runState);
+    sanitized.input = Object.fromEntries(
+      Object.entries(sanitized.input ?? {}).filter(([key]) =>
+        ["id", "ticket_text"].includes(key)
+      )
+    );
+    return sanitized;
   }
 }
